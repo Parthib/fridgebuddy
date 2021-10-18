@@ -1,38 +1,94 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.home{
+  background-color: #4caf50;
+  color: azure;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.body {
+  padding-top: 3%;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding-left: 20%;
+  padding-right: 20%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.icon{
+  padding-top: 2%;
+  padding-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 7rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.platformLinks{
+  padding-top: 2%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.storeBadgeApple{
+  width: 13rem;
+}
+.storeBadgeAndroid{
+  width: 16rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content{
+  background-color: #4caf50;
+  color: azure;
+  align-content: center;
+  padding: 7%;
 }
+
+.content p{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.content ol{
+  padding-left: 2rem;
+}
+
+
+h1 {
+  font-family: 'Comfortaa', cursive;
+  text-align: center;
+}
+
+h2 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+h4 {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+
+
