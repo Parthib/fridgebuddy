@@ -11,14 +11,14 @@ import TermsOfService from './markdown/terms-of-service.md';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/privacy-policy' component={() => <Document markdown={PrivacyPolicy}/>} />
           <Route path='/terms-of-service' component={() => <Document markdown={TermsOfService}/>} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

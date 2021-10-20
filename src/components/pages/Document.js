@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import PropTypes from 'prop-types'
+
 import '../../App.css';
 import ReactMarkdown from 'react-markdown';
 
@@ -6,31 +8,30 @@ import ReactMarkdown from 'react-markdown';
 class Document extends Component {
     constructor(props) {
         super(props)
-        this.state = {markdownText: 'cat'}
+        this.state = {markdownText: ''}
     }
 
     componentDidMount() {
-        console.log("caadasdasdfasf");
         fetch(this.props.markdown)
         .then(response => response.text())
         .then(
           text => {
-              console.log(text);
             this.setState({markdownText: text});
           }
         );
     }
-    
 
     render() {
         return (
-            <div class="content">
-            <ReactMarkdown
-                children={this.state.markdownText}
-            />
+            <div className="content">
+              <ReactMarkdown>{this.state.markdownText}</ReactMarkdown>
             </div>
         );
     }
+}
+
+Document.propTypes = {
+    markdown: PropTypes.string
 }
 
 export default Document;
