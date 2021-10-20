@@ -6,18 +6,23 @@ import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-rou
 import Document from './components/pages/Document';
 import PrivacyPolicy from './markdown/privacy-policy.md';
 import TermsOfService from './markdown/terms-of-service.md';
+import Analytics from 'react-router-ga';
+
+import data from './private';
 
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/privacy-policy' component={() => <Document markdown={PrivacyPolicy}/>} />
-          <Route path='/terms-of-service' component={() => <Document markdown={TermsOfService}/>} />
-        </Switch>
+        <Analytics id={data.analyticsId}>
+          <Navbar />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/privacy-policy' component={() => <Document markdown={PrivacyPolicy}/>} />
+            <Route path='/terms-of-service' component={() => <Document markdown={TermsOfService}/>} />
+          </Switch>
+        </Analytics>
       </Router>
     </>
   );
