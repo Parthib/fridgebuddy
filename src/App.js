@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-rou
 import Document from './components/pages/Document';
 import PrivacyPolicy from './markdown/privacy-policy.md';
 import TermsOfService from './markdown/terms-of-service.md';
+import NFT from './markdown/nft.md';
 import Analytics from 'react-router-ga';
 
 import data from './private';
@@ -21,6 +22,7 @@ function App() {
             <Route path='/' exact component={Home} />
             <Route path='/privacy-policy' component={() => <Document markdown={PrivacyPolicy}/>} />
             <Route path='/terms-of-service' component={() => <Document markdown={TermsOfService}/>} />
+            <Route path='/nft' component={() => <Document markdown={NFT}/>} />
           </Switch>
         </Analytics>
       </Router>

@@ -28,11 +28,11 @@ function Home() {
 
         </div>
         <div className="platformLinks">
-            <img className="storeBadgeApple" src='images/apple-store-badge.svg' alt="Apple Store Download Badge" />
-            <img className="storeBadgeAndroid" src='images/google-play-badge.png' alt="Google Play Download Badge" />
+            <a className="appleLink" href="https://apps.apple.com/us/app/fridgebuddy/id1591836974#?platform=iphone"><img className="storeBadgeApple" src='images/apple-store-badge.png' alt="Apple Store Download Badge" /></a>
+            <a className="androidLink" href="https://play.google.com/store/apps/details?id=io.fridgebuddy.app"><img className="storeBadgeAndroid" src='images/google-play-badge.png' alt="Google Play Download Badge" /></a>
         </div>
         <div className="body">
-        Coming to an app store near you December 2021
+        Available now!
         </div>
     </div>
   );
