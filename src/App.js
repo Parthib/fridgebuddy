@@ -1,33 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Document from './components/pages/Document';
 import PrivacyPolicy from './markdown/privacy-policy.md';
 import TermsOfService from './markdown/terms-of-service.md';
-import NFT from './markdown/nft.md';
-import Analytics from 'react-router-ga';
+import ReactGA from 'react-ga4';
 
-import data from './private';
+const analyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
+ReactGA.initialize(analyticsId);
 
+function usePageViews() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });
+  }, [location]);
+}
 
 function App() {
+  usePageViews();
+  
   return (
     <>
-      <Router>
-        <Analytics id={data.analyticsId}>
-          <Navbar />
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/privacy-policy' component={() => <Document markdown={PrivacyPolicy}/>} />
-            <Route path='/terms-of-service' component={() => <Document markdown={TermsOfService}/>} />
-            <Route path='/nft' component={() => <Document markdown={NFT}/>} />
-          </Switch>
-        </Analytics>
-      </Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/privacy-policy' element={<Document key="privacy-policy" markdown={PrivacyPolicy}/>} />
+        <Route path='/terms-of-service' element={<Document key="terms-of-service" markdown={TermsOfService}/>} />
+      </Routes>
     </>
   );
 }
 
-export default App;
+
+export default function Root() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}

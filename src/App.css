@@ -67,9 +67,8 @@ body {
   padding-left: 2%;
 }
 
-a {
+a.appleLink {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
