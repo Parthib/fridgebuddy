@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ensure it takes up the full height of the viewport */
+    min-height: 100vh;
     line-height: 1.7;
 }
 
@@ -18,24 +18,24 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content */
+    align-items: center;
 }
   
 input[type="email"] {
     width: 100%;
     padding: 0.75rem;
     margin-top: 0.5rem;
-    border: 1px solid #bbb; /* Slightly darker border for better visibility */
+    border: 1px solid #bbb;
     border-radius: 4px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
 
 input[type="email"]:hover, input[type="email"]:focus {
-    border-color: #4caf50; /* Add hover and focus effect for input */
+    border-color: #4caf50;
 }
   
-button {
+.submitButton {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1rem;
@@ -43,25 +43,56 @@ button {
     color: #ffffff;
     border: none;
     border-radius: 4px;
-    font-size: 1.1rem; /* Slightly larger font for better readability */
+    font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    position: relative;
 }
-  
-button:hover {
+
+.submitButton:hover {
     background-color: #45a049;
-    transform: translateY(-2px); /* Add a slight lift effect on hover */
+    transform: translateY(-2px);
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #ffffff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.successMessage {
+    color: green;
+    text-align: center;
+    font-size: 1rem;
 }
   
-p {
-    margin-top: 1rem;
+.errorMessage {
+    color: red;
     text-align: center;
-    color: #ff0000;
-    font-size: 1rem; /* Slightly larger font for visibility */
+    font-size: 1rem;
 }
   
 .recaptchaContainer {
     margin: 1.5rem 0;
     text-align: center;
     width: 100%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

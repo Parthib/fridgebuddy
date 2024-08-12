@@ -6,6 +6,9 @@ function AccountDeletionForm() {
   const [email, setEmail] = useState('');
   const [recaptchaToken, setRecaptchaToken] = useState(null);
   const [formStatus, setFormStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const recaptchaSiteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 
   const handleEmailChange = (e) => {
@@ -24,6 +27,8 @@ function AccountDeletionForm() {
       return;
     }
 
+    setIsSubmitting(true);
+
     const requestData = {
       recipientEmail: email,
       recaptchaResponse: recaptchaToken,
@@ -40,11 +45,18 @@ function AccountDeletionForm() {
 
       if (response.ok) {
         setFormStatus('If the account exists, an email was sent! Please check your inbox.');
+        setIsSuccess(true);
+      } else if (response.status === 429) {
+        setFormStatus('Too many requests. Please try again later.');
+        setIsSuccess(false);
       } else {
-        setFormStatus('There was an error submitting your request.');
+        setFormStatus('There was an error submitting your request. Please reach out to fridgebuddyapp@gmail.com');
+        setIsSuccess(false);
       }
     } catch (error) {
       setFormStatus('There was an error submitting your request. Please reach out to fridgebuddyapp@gmail.com');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -61,7 +73,6 @@ function AccountDeletionForm() {
           Too bad!
           <br/>
           Jk, we'll miss you.
-
       </div>
       <div className={styles.formContainer}>
         <h2>Request Account Deletion</h2>
@@ -84,9 +95,12 @@ function AccountDeletionForm() {
               onChange={handleRecaptchaChange}
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isSubmitting} className={`${styles.submitButton} ${isSubmitting ? styles.submitting : ''}`}>
+            <span className={styles.spinner} style={{ display: isSubmitting ? 'inline-block' : 'none' }}></span>
+            <span style={{ display: isSubmitting ? 'none' : 'inline-block' }}>Submit</span>
+          </button>
         </form>
-        {formStatus && <p>{formStatus}</p>}
+        {formStatus && <p className={isSuccess ? styles.successMessage : styles.errorMessage}>{formStatus}</p>}
       </div>
       <div className="footer">
         <br/>
