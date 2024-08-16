@@ -28,11 +28,18 @@ function AccountDeletionForm() {
     }
 
     setIsSubmitting(true);
+    setFormStatus('');
 
     const requestData = {
       recipientEmail: email,
       recaptchaResponse: recaptchaToken,
     };
+
+    let dots = '';
+    const intervalId = setInterval(() => {
+      dots = dots.length < 3 ? dots + '.' : '';
+      setFormStatus(`Working${dots}`);
+    }, 1000);
 
     try {
       const response = await fetch('https://api-staging.fridgebuddy.io/requestDeleteAccount', {
@@ -42,6 +49,8 @@ function AccountDeletionForm() {
         },
         body: JSON.stringify(requestData),
       });
+
+      clearInterval(intervalId); // Clear the interval when the request completes
 
       if (response.ok) {
         setFormStatus('If the account exists, an email was sent! Please check your inbox.');
@@ -54,6 +63,7 @@ function AccountDeletionForm() {
         setIsSuccess(false);
       }
     } catch (error) {
+      clearInterval(intervalId);
       setFormStatus('There was an error submitting your request. Please reach out to fridgebuddyapp@gmail.com');
     } finally {
       setIsSubmitting(false);
@@ -63,16 +73,16 @@ function AccountDeletionForm() {
   return (
     <div className={styles.mainContainer}>
       <div className='title'>
-          <div className='logo'>
-              <h1>Fridge Buddy</h1>
-          </div>
+        <div className='logo'>
+          <h1>Fridge Buddy</h1>
+        </div>
       </div>
       <div className="body">
-          So you want to delete your account?
-          <br/>
-          Too bad!
-          <br/>
-          Jk, we'll miss you.
+        So you want to delete your account?
+        <br/>
+        Too bad!
+        <br/>
+        Jk, we'll miss you.
       </div>
       <div className={styles.formContainer}>
         <h2>Request Account Deletion</h2>
@@ -104,7 +114,7 @@ function AccountDeletionForm() {
       </div>
       <div className="footer">
         <br/>
-            You'll get an email just to make sure it's you.
+        You'll get an email just to make sure it's you.
         <br/>
       </div>
     </div>
