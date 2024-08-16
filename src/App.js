@@ -8,6 +8,7 @@ import PrivacyPolicy from './markdown/privacy-policy.md';
 import TermsOfService from './markdown/terms-of-service.md';
 import ReactGA from 'react-ga4';
 import AccountDeletionForm from './components/pages/RequestAccountDeletion';
+import DeleteAccountPage from './components/pages/DeleteAccount';
 
 const analyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
 ReactGA.initialize(analyticsId);
@@ -31,6 +32,7 @@ function App() {
         <Route path='/privacy-policy' element={<Document key="privacy-policy" markdown={PrivacyPolicy}/>} />
         <Route path='/terms-of-service' element={<Document key="terms-of-service" markdown={TermsOfService}/>} />
         <Route path='request-account-deletion' element={<AccountDeletionForm />} />
+        <Route path='delete-account' element={<DeleteAccountPage />} />
       </Routes>
     </>
   );
