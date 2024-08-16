@@ -8,6 +8,7 @@ function useQuery() {
 
 function DeleteAccountPage() {
   const [statusMessage, setStatusMessage] = useState('Your account is being deleted...');
+  const [isProcessing, setIsProcessing] = useState(true);
   const query = useQuery();
   const token = query.get('token');
 
@@ -26,16 +27,19 @@ function DeleteAccountPage() {
           if (response.ok) {
             setStatusMessage('Your account has been successfully deleted.');
           } else {
-            setStatusMessage('There was an issue deleting your account. Please contact support.');
+            setStatusMessage('There was an issue deleting your account. Please contact support - fridgebuddyapp@gmail.com.');
           }
         } catch (error) {
-          setStatusMessage('There was an error processing your request. Please contact support.');
+          setStatusMessage('There was an error processing your request. Please contact support - fridgebuddyapp@gmail.com.');
+        } finally {
+          setIsProcessing(false);
         }
       };
 
       deleteAccount();
     } else {
       setStatusMessage('Invalid or missing token. Unable to delete account.');
+      setIsProcessing(false);
     }
   }, [token]);
 
@@ -45,6 +49,7 @@ function DeleteAccountPage() {
         <h1>Fridge Buddy</h1>
       </div>
       <div className={styles.body}>
+        {isProcessing && <div className={styles.spinner}></div>}
         <p>{statusMessage}</p>
       </div>
     </div>
