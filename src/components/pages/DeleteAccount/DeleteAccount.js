@@ -24,8 +24,12 @@ function DeleteAccountPage() {
             body: JSON.stringify({ token }),
           });
 
+          const data = await response.json();
+
           if (response.ok) {
-            setStatusMessage('Your account has been successfully deleted.');
+            setStatusMessage(`The account associated with the email ${data.email} was successfully deleted!`);
+          } else if (response.status === 404) {
+            setStatusMessage(`The user associated with the email ${data.email} was not found (it was probably deleted already!). For any questions, reach out to fridgebuddyapp@gmail.com.`);
           } else {
             setStatusMessage('There was an issue deleting your account. Please contact support - fridgebuddyapp@gmail.com.');
           }
