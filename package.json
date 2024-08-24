@@ -24,9 +24,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://fridgebuddy.io --acl public-read"
-  },
-  "browserslist": {
+    "deploy": "npm run build && npm run deploy:s3 && npm run invalidate:cloudfront",
+    "deploy:s3": "aws s3 sync build/ s3://fridgebuddy.io --acl public-read",
+    "invalidate:cloudfront": "python scripts/invalidate_cloudfront_cache.py"
+    },
+    "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
@@ -39,7 +41,8 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react": "^7.35.0",
-     "@babel/plugin-proposal-private-property-in-object": "^7.14.5"
+    "@babel/plugin-proposal-private-property-in-object": "^7.14.5",
+    "dotenv-cli": "^7.4.2",
+    "eslint-plugin-react": "^7.35.0"
   }
 }

@@ -107,6 +107,14 @@ We store your user data and content as long as you are a member of our platform.
 
 If you decide that you no longer want to use our app and also want us to delete your data, then you are free to contact us with your account details to begin the process of account deletion. If you would like the data we have associated with your account, then you are also welcome to reach out to us (see the contact us section below).
 
+ Additionally, you have the option to initiate an automated process for data deletion by visiting the [request account deletion](/request-account-deletion) page. This process will permanently remove all personal information associated with your account, including your profile, content you've created, the account itself, and any other stored data. Please note that once this data is deleted, it cannot be recovered.
+
+However, if you have shared information with other users (such as by sharing a list), that information may not be deleted. Once data is shared, it becomes a shared resource without a clear owner and may remain accessible to others even after your account is deleted.
+
+This applies to both manually requested and automated account deletions.
+
+Please note that any permanent and subscription purchases are tied exclusively to the account on which they were made. Deleting your account will result in the loss of these purchases and their associated benefits, which cannot be recovered. Additionally, account deletions do not automatically cancel any existing subscriptions. Users must manually cancel subscriptions by visiting the App Store or Google Play Store.
+
 ### Children's Information
 
 Our app and services are not intended to be used by children under 13 years of age. We do not knowingly collect personal information from children under 13 years of age. If a parent or guardian believes that their child has disclosed personally identifiable information on our platform(s), then please reach out to us using the contact information provided at the end of this document. A parent or guardian can initiate the process of reviewing and requesting the deletion of a child's personal information on our platform.

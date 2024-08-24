@@ -42,7 +42,7 @@ function AccountDeletionForm() {
     }, 1000);
 
     try {
-      const response = await fetch('https://api-staging.fridgebuddy.io/requestDeleteAccount', {
+      const response = await fetch('https://api.fridgebuddy.io/requestDeleteAccount', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
